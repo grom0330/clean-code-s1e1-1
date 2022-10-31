@@ -9,7 +9,7 @@
 // Event handling, user interaction is what starts the code execution.
 
 var taskInput=document.getElementById("new__task");//Add a new task.
-var addButton=document.getElementsByTagName("button")[0];//first button
+var addButton=document.querySelectorAll(".button")[0];//first button
 var incompleteTaskHolder=document.getElementById("incomplete__tasks");//ul of #incompleteTasks
 var completedTasksHolder=document.getElementById("completed__tasks");//completed-tasks
 
@@ -18,13 +18,21 @@ var completedTasksHolder=document.getElementById("completed__tasks");//completed
 var createNewTaskElement=function(taskString){
 
     var listItem=document.createElement("li");
+    listItem.className="li";
+
 
     //input (checkbox)
-    var checkBox=document.createElement("input");//checkbx
+    var checkBox=document.createElement("input");//checkbox 
+    checkBox.className="li__checkbox";
+
     //label
     var label=document.createElement("label");//label
+    label.innerText=taskString;
+    label.className="task li__label";
+
     //input (text)
     var editInput=document.createElement("input");//text
+
     //button.edit
     var editButton=document.createElement("button");//edit button
 
@@ -32,18 +40,17 @@ var createNewTaskElement=function(taskString){
     var deleteButton=document.createElement("button");//delete button
     var deleteButtonImg=document.createElement("img");//delete button image
 
-    label.innerText=taskString;
-    label.className='task';
 
     //Each elements, needs appending
     checkBox.type="checkbox";
     editInput.type="text";
-    editInput.className="task";
+    editInput.className="task input__type__text";
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
-    editButton.className="edit";
+    editButton.className="edit button";
 
-    deleteButton.className="delete";
+    deleteButton.className="delete button";
+
     deleteButtonImg.src='./remove.svg';
     deleteButton.appendChild(deleteButtonImg);
 
@@ -123,6 +130,8 @@ var taskCompleted=function(){
     var listItem=this.parentNode;
     completedTasksHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskIncomplete);
+    list__label = listItem.querySelector(".li__label");
+    list__label.classList.add("label__done");
 
 }
 
@@ -135,6 +144,8 @@ var taskIncomplete=function(){
     var listItem=this.parentNode;
     incompleteTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem,taskCompleted);
+    list__label = listItem.querySelector(".li__label");
+    list__label.classList.remove("label__done");
 }
 
 
