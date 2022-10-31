@@ -38,7 +38,7 @@
 .task {
   width: 56%;
   display: inline-block;
-  flex-grow: 1
+  flex-grow: 1;
 }
 
 .add__text {
@@ -107,7 +107,7 @@ button {
   border-radius: 6px;
   font-family: Lato, sans-serif;
   color: #888;
-  width: 226px
+  width: 226px;
 }
 
 .input__type__text:focus {
@@ -172,12 +172,12 @@ button {
 /* Edit Task */
 
 .input__type__text {
-  display: none
+  display: none;
 }
 
 .edit__mode .input__type__text {
   display: inline-block;
-  width: 224px
+  width: 224px;
 }
 
 .edit__mode .li__label {
